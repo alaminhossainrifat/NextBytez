@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Slider with Quotes</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #4a0063, #310042);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .slider-container {
+            width: 90%;
+            max-width: 1200px;
+            padding: 2rem;
+            position: relative;
+        }
+
+        .slider-title {
+            color: white;
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            text-align: left;
+        }
+
+        .slider {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .slide {
+            display: none;
+            width: 100%;
+        }
+
+        .slide.active {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 2rem;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+        }
+
+        .slide-image {
+            width: 50%;
+            aspect-ratio: 4/3;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        .slide-content {
+            width: 50%;
+            color: white;
+        }
+
+        .author {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #f0f0f0;
+        }
+
+        .subtitle {
+            font-size: 0.9rem;
+            color: #b8b8b8;
+            margin-bottom: 1rem;
+        }
+
+        .quote {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: #e0e0e0;
+        }
+
+        .thumbnail-container {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+            justify-content: flex-start;
+        }
+
+        .thumbnail {
+            width: 100px;
+            height: 75px;
+            object-fit: cover;
+            border-radius: 4px;
+            cursor: pointer;
+            opacity: 0.6;
+            transition: opacity 0.3s ease;
+        }
+
+        .thumbnail.active {
+            opacity: 1;
+            border: 2px solid white;
+        }
+
+        .nav-button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 1rem;
+            border: none;
+            cursor: pointer;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.3s ease;
+        }
+
+        .nav-button:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .prev {
+            left: 1rem;
+        }
+
+        .next {
+            right: 1rem;
+        }
+
+        @media (max-width: 768px) {
+            .slide.active {
+                flex-direction: column;
+            }
+
+            .slide-image, .slide-content {
+                width: 100%;
+            }
+
+            .slider-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="slider-container">
+        <h1 class="slider-title">ABITURENTEN ÜBER LLORET DE MAR</h1>
+        <div class="slider">
+            <div class="slide active">
+                <img src="./image/main-image.jpg" alt="Person 1" class="slide-image">
+                <div class="slide-content">
+                    <h2 class="author">Miriam R.</h2>
+                    <p class="subtitle">aus Brandenburg</p>
+                    <p class="quote">"Unsere Abireise nach Lloret de Mar war einfach unvergesslich! Die Reiseleiter waren super freundlich und immer ansprechbar. Wir hatten die beste Zeit bei den Partys im Megapark!"</p>
+                </div>
+            </div>
+            <div class="slide">
+                <img src="./image/thumb1.jpg" alt="Person 2" class="slide-image">
+                <div class="slide-content">
+                    <h2 class="author">Thomas K.</h2>
+                    <p class="subtitle">aus München</p>
+                    <p class="quote">"Die Strände sind traumhaft und das Nachtleben ist unglaublich! Wir haben so viele neue Freunde aus ganz Deutschland kennengelernt. Eine perfekte Art, den Schulabschluss zu feiern!"</p>
+                </div>
+            </div>
+            <div class="slide">
+                <img src="./image/thumb2.jpg" alt="Person 3" class="slide-image">
+                <div class="slide-content">
+                    <h2 class="author">Sophie M.</h2>
+                    <p class="subtitle">aus Hamburg</p>
+                    <p class="quote">"Die Kombination aus Strand, Sonne und Party war genau das, was wir nach dem Abi gebraucht haben. Die Organisation war top und die Ausflüge waren super spannend!"</p>
+                </div>
+            </div>
+            <div class="slide">
+                <img src="./image/thumb3.jpg" alt="Person 4" class="slide-image">
+                <div class="slide-content">
+                    <h2 class="author">Leon P.</h2>
+                    <p class="subtitle">aus Berlin</p>
+                    <p class="quote">"Lloret de Mar ist der perfekte Ort für eine Abireise. Das mediterrane Flair, die vielen internationalen Kontakte und die tollen Events haben unseren Aufenthalt unvergesslich gemacht!"</p>
+                </div>
+            </div>
+            
+            <button class="nav-button prev">❮</button>
+            <button class="nav-button next">❯</button>
+        </div>
+        <div class="thumbnail-container">
+            <img src="./image/main-image.jpg" alt="Thumbnail 1" class="thumbnail active">
+            <img src="./image/thumb1.jpg" alt="Thumbnail 2" class="thumbnail">
+            <img src="./image/thumb2.jpg" alt="Thumbnail 3" class="thumbnail">
+            <img src="./image/thumb3.jpg" alt="Thumbnail 4" class="thumbnail">
+        </div>
+    </div>
+
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const thumbnails = document.querySelectorAll('.thumbnail');
+        const totalSlides = slides.length;
+
+        function showSlide(n) {
+            // Remove active class from all slides and thumbnails
+            slides.forEach(slide => slide.classList.remove('active'));
+            thumbnails.forEach(thumb => thumb.classList.remove('active'));
+            
+            // Update current slide index
+            currentSlide = (n + totalSlides) % totalSlides;
+            
+            // Add active class to current slide and thumbnail
+            slides[currentSlide].classList.add('active');
+            thumbnails[currentSlide].classList.add('active');
+        }
+
+        // Next/previous controls
+        document.querySelector('.next').addEventListener('click', () => showSlide(currentSlide + 1));
+        document.querySelector('.prev').addEventListener('click', () => showSlide(currentSlide - 1));
+
+        // Thumbnail clicks
+        thumbnails.forEach((thumb, index) => {
+            thumb.addEventListener('click', () => showSlide(index));
+        });
+
+        // Auto advance slides every 5 seconds
+        setInterval(() => showSlide(currentSlide + 1), 5000);
+    </script>
+</body>
+</html>
