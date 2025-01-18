@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Album Reviews Carousel</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #1a1a1a;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #fff;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 50px auto;
+            padding: 20px;
+        }
+
+        .slider {
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            height: 500px;
+            border-radius: 15px;
+            background-color: #2a2a2a;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .slide {
+            display: none;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            padding: 30px;
+            box-sizing: border-box;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+
+        .slide.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .review-content {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            height: 100%;
+        }
+
+        .album-cover {
+            flex: 0 0 300px;
+            height: 300px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .album-cover img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .review-text {
+            flex: 1;
+            padding-right: 20px;
+        }
+
+        .album-title {
+            font-size: 2.5em;
+            margin: 0 0 10px 0;
+            color: #ff4d4d;
+        }
+
+        .artist-name {
+            font-size: 1.5em;
+            margin: 0 0 20px 0;
+            color: #999;
+        }
+
+        .review-body {
+            font-size: 1.1em;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .rating {
+            font-size: 1.2em;
+            color: #ffd700;
+        }
+
+        .prev,
+        .next {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(255, 77, 77, 0.8);
+            color: #fff;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            transition: background-color 0.3s ease;
+            border: none;
+            outline: none;
+        }
+
+        .prev:hover,
+        .next:hover {
+            background-color: rgba(255, 77, 77, 1);
+        }
+
+        .prev {
+            left: 20px;
+        }
+
+        .next {
+            right: 20px;
+        }
+
+        .dots-container {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.3);
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .dot.active {
+            background-color: #ff4d4d;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="slider">
+            <div class="slide">
+                <div class="review-content">
+                    <div class="album-cover">
+                        <img src="https://upload.wikimedia.org/wikipedia/en/e/e6/Pablo_honey.jpg" alt="Pablo Honey">
+                    </div>
+                    <div class="review-text">
+                        <h2 class="album-title">Pablo Honey</h2>
+                        <h3 class="artist-name">Radiohead</h3>
+                        <p class="review-body">A raw and energetic debut album that showcases the early potential of what would become one of rock's most innovative bands. While not as experimental as their later works, tracks like 'You' and 'Creep' demonstrate the band's ability to craft compelling alternative rock.</p>
+                        <div class="rating">★★★★☆</div>
+                    </div>
+                </div>
+            </div>
+            <div class="slide">
+                <div class="review-content">
+                    <div class="album-cover">
+                        <img src="https://upload.wikimedia.org/wikipedia/en/9/92/Aerosmith_-_Greatest_Hits.jpg" alt="Essential Aerosmith">
+                    </div>
+                    <div class="review-text">
+                        <h2 class="album-title">The Essential</h2>
+                        <h3 class="artist-name">Aerosmith</h3>
+                        <p class="review-body">A comprehensive collection that spans the legendary band's career. From the raw energy of their early hits to their massive commercial success in the late 80s and 90s, this compilation showcases why Aerosmith remains one of rock's most enduring acts.</p>
+                        <div class="rating">★★★★★</div>
+                    </div>
+                </div>
+            </div>
+            <div class="slide">
+                <div class="review-content">
+                    <div class="album-cover">
+                        <img src="https://upload.wikimedia.org/wikipedia/en/a/a6/CCR-Chronicle-v1.jpg" alt="Best of CCR">
+                    </div>
+                    <div class="review-text">
+                        <h2 class="album-title">Best Of</h2>
+                        <h3 class="artist-name">Creedence Clearwater Revival</h3>
+                        <p class="review-body">An essential collection of CCR's timeless classics. From bayou rock to protest songs, this compilation demonstrates the band's masterful blend of rock, country, and blues influences, creating a sound that defined an era.</p>
+                        <div class="rating">★★★★★</div>
+                    </div>
+                </div>
+            </div>
+            <button class="prev" onclick="changeSlide(-1)">❮</button>
+            <button class="next" onclick="changeSlide(1)">❯</button>
+            <div class="dots-container"></div>
+        </div>
+    </div>
+
+    <script>
+        let slideIndex = 0;
+        const slides = document.querySelectorAll('.slide');
+        const dotsContainer = document.querySelector('.dots-container');
+
+        // Create dots
+        slides.forEach((_, index) => {
+            const dot = document.createElement('div');
+            dot.classList.add('dot');
+            dot.onclick = () => goToSlide(index);
+            dotsContainer.appendChild(dot);
+        });
+
+        function changeSlide(n) {
+            showSlides(slideIndex += n);
+        }
+
+        function goToSlide(n) {
+            showSlides(slideIndex = n);
+        }
+
+        function showSlides(n) {
+            const dots = document.querySelectorAll('.dot');
+            
+            if (n >= slides.length) slideIndex = 0;
+            if (n < 0) slideIndex = slides.length - 1;
+
+            slides.forEach(slide => {
+                slide.classList.remove('active');
+            });
+            dots.forEach(dot => {
+                dot.classList.remove('active');
+            });
+
+            slides[slideIndex].classList.add('active');
+            dots[slideIndex].classList.add('active');
+        }
+
+        // Initialize the first slide
+        showSlides(slideIndex);
+
+        // Auto-advance slides every 5 seconds
+        setInterval(() => {
+            changeSlide(1);
+        }, 5000);
+    </script>
+</body>
+</html>

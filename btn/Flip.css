@@ -1,0 +1,38 @@
+.dm-flip-cardd {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden; /* Ensure content stays within the card */
+}
+
+.dm-front-cardd,
+.dm-back-cardd {
+    backface-visibility: hidden;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transform: translateY(0); /* Default position */
+    transition: transform 0.8s ease-in-out;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+}
+
+.dm-front-cardd {
+    transform: translateY(0); /* Front card starts in place */
+    z-index: 2; /* Ensure front card is on top */
+}
+
+.dm-back-cardd {
+    transform: translateY(100%); /* Back card starts below */
+    z-index: 1;
+}
+
+.dm-flip-cardd:hover .dm-front-cardd {
+    transform: translateY(-100%); /* Slide front card up */
+}
+
+.dm-flip-cardd:hover .dm-back-cardd {
+    transform: translateY(0); /* Slide back card into view */
+}

@@ -1,0 +1,109 @@
+html, body, .main {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.carousel {
+    margin: 0 auto;
+    position: relative;
+    height: 500px;
+    top: 50%;
+    transform: translateY(-50%);
+    overflow: hidden;
+    width: 1280px;
+
+    &__site {
+        width: 180px;
+        background: #f00;
+        transition: width 1s;
+    }
+    
+    &__username {
+        font-size: 14px;
+        width: 180px;
+        transition: width 1s;
+    }
+      
+    &__quote {
+        margin: 0;
+        padding: 0;      
+        text-align: center;
+        opacity: 0;
+        width: 180px;
+        transition: width 1s;
+    }
+          
+    &__item {
+        position: absolute;
+        transition: transform 1s, left 1s, opacity 1s, z-index 0s;
+        opacity: 1;
+
+        img {
+            width: 280px;
+            transition: width 1s;
+        }
+      
+        &--lhide {
+            left: 0;
+            opacity: 0;
+            transform: translateY(50%) translateX(-50%);
+            img {
+                width: 120px;
+            }
+        }
+
+        &--rhide {
+            left: 100%;
+            opacity: 0;
+            transform: translateY(50%) translateX(-50%);
+            img {
+                width: 120px;
+            }
+        }
+
+        &--prev {
+            z-index: 5;
+            left: 30%;
+            transform: translateY(50px) translateX(-50%);
+            opacity: 0.7;
+            img {
+                width: 180px;
+            }
+        }
+
+        &--selected {
+            z-index: 10;
+            left: 50%;
+            transform: translateY(0px) translateX(-50%);
+    
+            div {
+                width: 280px;
+            }
+            
+            blockquote {
+                opacity: 1;
+                display: block;
+                width: 280px;
+            }
+        }
+            
+        &--next {
+            z-index: 5;
+            left: 70%;
+            transform: translateY(50px) translateX(-50%);
+            opacity: 0.7;
+            img {
+                width: 180px;
+            }
+        }
+    }
+         
+    &__buttons {
+        position: fixed;
+        left: 50%;
+        transform: translateX(-50%);
+        bottom: 10px;
+    }
+}
