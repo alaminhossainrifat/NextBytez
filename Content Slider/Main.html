@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Slider</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #3c1361;
+            color: #fff;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        .slider-container {
+            padding: 20px;
+            max-width: 900px;
+            margin: auto;
+        }
+
+        h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .slider {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .slider-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .main-image img {
+            width: 100%;
+            max-width: 300px;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .text-content {
+            max-width: 400px;
+            text-align: left;
+        }
+
+        blockquote {
+            font-style: italic;
+            font-size: 16px;
+            margin: 10px 0;
+        }
+
+        .thumbnails {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .thumbnail-images {
+            display: flex;
+            gap: 10px;
+        }
+
+        .thumbnail-images img {
+            width: 60px;
+            height: 60px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .thumbnail-images img:hover {
+            transform: scale(1.1);
+        }
+
+        .arrow {
+            background-color: transparent;
+            color: #ffffff;
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            font-size: 20px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        @media (max-width: 768px) {
+            .slider-content {
+                flex-direction: column;
+            }
+
+            .text-content {
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 18px;
+            }
+
+            .main-image img {
+                max-width: 250px;
+            }
+
+            .thumbnail-images img {
+                width: 50px;
+                height: 50px;
+            }
+
+            .arrow {
+                width: 30px;
+                height: 30px;
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="slider-container">
+        <h1>ABITURIENTEN ÜBER LLORET DE MAR</h1>
+        <div class="slider">
+            <div class="slider-content">
+                <div class="main-image">
+                    <img src="http://creative-calls.de/Abimazing/wp-content/uploads/2025/01/main-image.webp" alt="Main Image">
+                </div>
+                <div class="text-content">
+                    <p><strong>Miriam R.</strong></p>
+                    <p style="color: #FF10FF;">aus Niedersachsen</p>
+                    <blockquote>
+                        „Unsere Abireise nach Lloret de Mar war einfach unvergesslich! Die Reiseleiter waren super freundlich und immer ansprechbar. Wir hatten die beste Zeit bei den Partys im Megapark!“
+                    </blockquote>
+                    <div class="thumbnails">
+                        <button class="arrow left">&lt;</button>
+                        <div class="thumbnail-images">
+                            <img src="http://creative-calls.de/Abimazing/wp-content/uploads/2025/01/thumb1.webp" alt="Thumbnail 1">
+                            <img src="http://creative-calls.de/Abimazing/wp-content/uploads/2025/01/thumb2.webp" alt="Thumbnail 2">
+                            <img src="http://creative-calls.de/Abimazing/wp-content/uploads/2025/01/thumb3.webp" alt="Thumbnail 3">
+                        </div>
+                        <button class="arrow right">&gt;</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const thumbnails = document.querySelectorAll('.thumbnail-images img');
+            const mainImage = document.querySelector('.main-image img');
+            const nameElement = document.querySelector('.text-content p strong');
+            const locationElement = document.querySelector('.text-content p[style]');
+            const quoteElement = document.querySelector('.text-content blockquote');
+            const leftArrow = document.querySelector('.arrow.left');
+            const rightArrow = document.querySelector('.arrow.right');
+
+            let currentIndex = 0;
+
+            const sliderData = [
+                {
+                    image: 'http://creative-calls.de/Abimazing/wp-content/uploads/2025/01/main-image.webp',
+                    name: 'Miriam R.',
+                    location: 'aus Niedersachsen',
+                    quote: '„Unsere Abireise nach Lloret de Mar war einfach unvergesslich! Die Reiseleiter waren super freundlich und immer ansprechbar. Wir hatten die beste Zeit bei den Partys im Megapark!"'
+                },
+                {
+                    image: 'http://creative-calls.de/Abimazing/wp-content/uploads/2025/01/thumb1.webp',
+                    name: 'Jonas K.',
+                    location: 'aus Bayern',
+                    quote: '„Die Strandpartys waren der absolute Wahnsinn! Tolle Musik, coole Leute und eine unglaubliche Atmosphäre. Definitiv die beste Entscheidung für unsere Abireise!"'
+                },
+                {
+                    image: 'http://creative-calls.de/Abimazing/wp-content/uploads/2025/01/thumb2.webp',
+                    name: 'Laura M.',
+                    location: 'aus Berlin',
+                    quote: '„Lloret de Mar ist einfach perfekt für Abireisen! Die Clubs, das Wetter und die gesamte Stimmung waren unglaublich. Würde es sofort wieder machen!"'
+                },
+                {
+                    image: 'http://creative-calls.de/Abimazing/wp-content/uploads/2025/01/thumb3.webp',
+                    name: 'Tim S.',
+                    location: 'aus Hamburg',
+                    quote: '„Eine Woche voller unvergesslicher Momente! Die Organisation war top und wir konnten die Zeit mit unseren Freunden richtig genießen."'
+                }
+            ];
+
+            const updateContent = () => {
+                const currentData = sliderData[currentIndex];
+                mainImage.src = currentData.image;
+                nameElement.textContent = currentData.name;
+                locationElement.textContent = currentData.location;
+                quoteElement.textContent = currentData.quote;
+            };
+
+            thumbnails.forEach((thumbnail, index) => {
+                thumbnail.addEventListener('click', () => {
+                    currentIndex = index;
+                    updateContent();
+                });
+            });
+
+            leftArrow.addEventListener('click', () => {
+                currentIndex = (currentIndex === 0) ? sliderData.length - 1 : currentIndex - 1;
+                updateContent();
+            });
+
+            rightArrow.addEventListener('click', () => {
+                currentIndex = (currentIndex === sliderData.length - 1) ? 0 : currentIndex + 1;
+                updateContent();
+            });
+
+            // Initialize with first slide
+            updateContent();
+        });
+    </script>
+</body>
+</html>

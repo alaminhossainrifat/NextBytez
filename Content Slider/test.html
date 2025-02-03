@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slider</title>
+    
+    <!-- Link to Montserrat font from Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* General Body Styles */
+        body {
+            font-family: 'Montserrat', sans-serif; /* Using Montserrat font */
+            background-color: #3c1361; /* Dark purple background color */
+            color: #fff; /* White text color */
+            text-align: center; /* Center-align the text */
+            margin: 0; /* Remove default margin */
+            padding: 0; /* Remove default padding */
+        }
+
+        /* Container for the slider */
+        .rif-slider-container {
+            padding: 20px; /* Add padding around the slider container */
+            max-width: 900px; /* Set maximum width of the slider container */
+            margin: auto; /* Center the container horizontally */
+        }
+
+        /* Header Styles */
+        h1 {
+            font-size: 24px; /* Set font size for the title */
+            margin-bottom: 20px; /* Add bottom margin to space out the title from the content */
+        }
+
+        /* Slider Flexbox Layout */
+        .rif-slider {
+            display: flex; /* Use flexbox layout for the slider */
+            flex-direction: column; /* Stack slider items vertically */
+            gap: 20px; /* Add space between slider items */
+        }
+
+        /* Content layout inside each slider */
+        .rif-slider-content {
+            display: flex; /* Use flexbox for content inside each slide */
+            gap: 20px; /* Add space between the image and the text */
+            align-items: center; /* Align items vertically centered */
+        }
+
+        /* Styles for the main image */
+        .rif-main-image img {
+            width: auto; /* Set the width of the main image */
+            height: auto; /* Maintain the aspect ratio of the image */
+            border-radius: 8px; /* Round the corners of the image */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add shadow for depth */
+        }
+
+        /* Text content inside the slider */
+        .rif-text-content {
+            max-width: 400px; /* Limit the width of the text content */
+            text-align: left; /* Align text to the left */
+        }
+
+        /* Blockquote styling for quotes */
+        blockquote {
+            font-style: italic; /* Italicize the quote */
+            font-size: 11px; /* Set font size for the quote */
+            margin-left: 0px; /* Remove left margin */
+            margin-right: 0px; /* Remove right margin */
+                margin-top: -104px;
+        }
+
+        /* Thumbnails container */
+        .rif-thumbnails {
+            align-items: center; /* Center-align the thumbnails */
+            justify-content: center; /* Center the thumbnails horizontally */
+            gap: 10px; /* Add space between arrows and thumbnails */
+            margin-top: 65px;
+        }
+
+        /* Layout for thumbnail images */
+        .rif-thumbnail-images {
+            display: flex; /* Use flexbox for thumbnail images */
+            gap: 10px; /* Add space between the thumbnail images */
+        }
+
+        /* Styling for thumbnail images */
+        .rif-thumbnail-images img {
+            width: 70px; /* Set the width of each thumbnail */
+            height: 70px; /* Set the height of each thumbnail */
+            border-radius: 8px; /* Round the corners of the thumbnail */
+            cursor: pointer; /* Change cursor to pointer when hovering */
+            transition: transform 0.2s; /* Smooth transform transition on hover */
+        }
+
+        /* Hover effect for thumbnail images */
+        .rif-thumbnail-images img:hover {
+            transform: scale(1.1); /* Slightly enlarge the image on hover */
+        }
+
+        /* Arrow button styles */
+        .rif-arrow {
+            background-color: transparent; /* Transparent background for arrows */
+            color: #ffffff; /* White color for arrows */
+            border: none; /* Remove the border */
+            border-radius: 50%; /* Make the arrow buttons circular */
+            width: 40px; /* Set the width of the arrow buttons */
+            height: 40px; /* Set the height of the arrow buttons */
+            font-size: 20px; /* Set font size for the arrow icon */
+            cursor: pointer; /* Change cursor to pointer when hovering */
+            transition: background-color 0.3s; /* Smooth transition for background color */
+            margin-top: 10px; /* Add some space on top */
+        }
+        button.rif-arrow.rif-left:hover {
+            background-color: transparent;
+        }
+        button.rif-arrow.rif-right:hover {
+            background-color: transparent;
+        }
+        p.mir-title {
+            /*color: red;*/
+            margin-bottom: 0px;
+            /*margin-top: 95px;*/
+        }
+        blockquote.bq {
+            color: #fff;
+            font-style: normal;
+            margin-top: 0px;
+            margin-bottom: 30px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <div class="rif-slider-container">
+        <div class="rif-slider">
+            <div class="rif-slider-content">
+                <!-- Main Image Section -->
+                <div class="rif-main-image">
+                    <img src="http://creative-calls.de/Abimazing/wp-content/uploads/2025/01/feedback_block_BARCELONA1.webp" alt="Main Image">
+                </div>
+                
+                <!-- Text Content Section (name, location, quote) -->
+                <div class="rif-text-content">
+                    <p class="mir-title"><strong>Emma S. </strong></p>
+                    <p style="color: #FF10FF;">aus Schleswig-Holstein</p>
+                    <blockquote class="bq">
+                        „Barcelona war die perfekte Wahl für unsere Abireise! Die Stadt ist einfach toll und die Aktivitäten waren abwechslungsreich!“
+                    </blockquote>
+                    
+                    <!-- Thumbnails and Arrows for Navigation -->
+                    <div class="rif-thumbnails">
+                        <button class="rif-arrow rif-left">&lt;</button>
+                        <button class="rif-arrow rif-right">&gt;</button>
+                        <div class="rif-thumbnail-images">
+                            <img src="http://creative-calls.de/Abimazing/wp-content/uploads/2025/01/feedback_block_BARCELONA2.webp" alt="Thumbnail 1">
+                            <img src="http://creative-calls.de/Abimazing/wp-content/uploads/2025/01/feedback_block_BARCELONA3.webp" alt="Thumbnail 2">
+                            <img src="http://creative-calls.de/Abimazing/wp-content/uploads/2025/01/feedback_block_BARCELONA4.webp" alt="Thumbnail 3">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // DOM Elements for the slider
+            const thumbnails = document.querySelectorAll('.rif-thumbnail-images img');
+            const mainImage = document.querySelector('.rif-main-image img');
+            const nameElement = document.querySelector('.rif-text-content p strong');
+            const locationElement = document.querySelector('.rif-text-content p[style]');
+            const quoteElement = document.querySelector('.rif-text-content blockquote');
+            const leftArrow = document.querySelector('.rif-arrow.rif-left');
+            const rightArrow = document.querySelector('.rif-arrow.rif-right');
+
+            // Initialize the current slide index
+            let currentIndex = 0;
+
+            // Slider data array for each slide's content
+            const sliderData = [
+                {
+                    image: 'http://creative-calls.de/Abimazing/wp-content/uploads/2025/01/feedback_block_BARCELONA1.webp',
+                    name: 'Emma S.',
+                    location: 'aus Schleswig-Holstein',
+                    quote: '„Barcelona war die perfekte Wahl für unsere Abireise! Die Stadt ist einfach toll und die Aktivitäten waren abwechslungsreich!“'
+                },
+                {
+                    image: 'http://creative-calls.de/Abimazing/wp-content/uploads/2025/01/feedback_block_BARCELONA2.webp',
+                    name: 'Jonas L.',
+                    location: 'aus Sachsen',
+                    quote: '„Barcelona war das perfekte Ziel für unsere Abireise! Die Organisation war top und die Teamer waren motiviert. Die Katamaranfahrt war definitiv das Highlight!“'
+                },
+                {
+                    image: 'http://creative-calls.de/Abimazing/wp-content/uploads/2025/01/feedback_block_BARCELONA3.webp',
+                    name: 'Bente Blohm',
+                    location: 'aus Brandenburg',
+                    quote: '„Die Abireise nach Barcelona war eine der besten Entscheidungen! Die Stadt ist so lebendig, und die Teamer waren super!“'
+                },
+                {
+                    image: 'http://creative-calls.de/Abimazing/wp-content/uploads/2025/01/feedback_block_BARCELONA4.webp',
+                    name: 'David M.',
+                    location: 'aus Thüringen',
+                    quote: '„Die Abireise nach Barcelona war unglaublich! Die Stadt hat so viel zu bieten und die Organisation war erstklassig. Jederzeit wieder!“'
+                }
+            ];
+
+            // Update the content of the slider
+            const updateContent = () => {
+                const currentData = sliderData[currentIndex];
+                mainImage.src = currentData.image;
+                nameElement.textContent = currentData.name;
+                locationElement.textContent = currentData.location;
+                quoteElement.textContent = currentData.quote;
+            };
+
+            // Event listener for clicking on a thumbnail image
+            thumbnails.forEach((thumbnail, index) => {
+                thumbnail.addEventListener('click', () => {
+                    currentIndex = index; // Update the current index based on the clicked thumbnail
+                    updateContent(); // Update content to match the new index
+                });
+            });
+
+            // Left arrow button to go to previous slide
+            leftArrow.addEventListener('click', () => {
+                currentIndex = (currentIndex === 0) ? sliderData.length - 1 : currentIndex - 1; // Wrap around to last slide if at the beginning
+                updateContent();
+            });
+
+            // Right arrow button to go to next slide
+            rightArrow.addEventListener('click', () => {
+                currentIndex = (currentIndex === sliderData.length - 1) ? 0 : currentIndex + 1; // Wrap around to first slide if at the last
+                updateContent();
+            });
+
+            // Automatic sliding every 2 seconds
+           
+             setInterval(() => {
+                currentIndex = (currentIndex + 1) % sliderData.length; // Move to the next slide, looping back to the first
+                updateContent();
+            }, 2000);
+
+            // Initialize slider with the first slide's content
+            updateContent();
+            
+        });
+    </script>
+</body>
+</html>
