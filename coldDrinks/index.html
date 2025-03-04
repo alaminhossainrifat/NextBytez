@@ -17,19 +17,19 @@
             height: 100vh;
             background: #f0f0f0;
         }
-        .slider {
+        .customSlider {
             display: flex;
             align-items: center;
             position: relative;
         }
-        .slider img {
+        .customSlider img {
             width: 150px;
             height: auto;
             margin: 0 10px;
             transition: transform 0.5s ease-in-out;
             opacity: 0.7;
         }
-        .slider img.active {
+        .customSlider img.active {
             transform: scale(1.5);
             opacity: 1;
         }
@@ -53,18 +53,24 @@
     </style>
 </head>
 <body>
-    <div class="slider">
+    <div class="customSlider">
         <button class="arrow left" onclick="prevSlide()">&#10094;</button>
-        <img src="./images/image1.webp" class="active" alt="Image 1">
+        <!-- <img src="./images/image1.webp" class="active" alt="Image 1">
         <img src="./images/image2.webp" alt="Image 2">
         <img src="./images/image3.webp" alt="Image 3">
-        <img src="./images/image4.webp" alt="Image 4">
+        <img src="./images/image4.webp" alt="Image 4"> -->
+
+        <img src="https://abmpallob.com/tropicalvibe/wp-content/uploads/2025/02/Slide1-1.webp" class="active" alt="Imag1">        
+        <img src="https://abmpallob.com/tropicalvibe/wp-content/uploads/2025/02/slider2-1.webp" alt="Image 2">        
+        <img src="https://abmpallob.com/tropicalvibe/wp-content/uploads/2025/02/Slider3-1.webp" alt="Image 3">        
+        <img src="https://abmpallob.com/tropicalvibe/wp-content/uploads/2025/02/Slider4-1.webp" alt="Image 4">
+
         <button class="arrow right" onclick="nextSlide()">&#10095;</button>
     </div>
 
     <script>
         let currentIndex = 0;
-        const images = document.querySelectorAll(".slider img");
+        const images = document.querySelectorAll(".customSlider img");
 
         function updateSlider() {
             images.forEach((img, index) => {
